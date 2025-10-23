@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import {
   validateEmail,
@@ -19,7 +19,7 @@ import { toast } from 'sonner';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { auth } from '@/lib/supabase.client';
 
-export default function Login() {
+function LoginForm() {
   const [formData, setFormData] = useState<LoginFormData>({
     email: '',
     password: '',
@@ -197,5 +197,13 @@ export default function Login() {
         </form>
       </CardContent>
     </Card>
+  );
+}
+
+export default function Login() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
