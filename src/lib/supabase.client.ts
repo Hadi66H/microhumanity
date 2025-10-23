@@ -1,10 +1,10 @@
 import { createBrowserClient } from '@supabase/ssr';
-
+import { Country } from '@/components/ui/country-dropdown';
 
 export function createSupabaseBrowserClient() {
   return createBrowserClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_ANON_KEY!
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   );
 }
 
@@ -12,10 +12,9 @@ export const auth = {
   signUp: async (userData: {
     email: string;
     password: string;
-    firstName: string;
-    lastName: string;
-    company?: string;
-    country: string;
+    fullName: string;
+    country: Country;
+    zipCode?: string;
     phoneNumber?: string;
   }) => {
     const supabase = createSupabaseBrowserClient();
@@ -24,10 +23,9 @@ export const auth = {
       password: userData.password,
       options: {
         data: {
-          first_name: userData.firstName,
-          last_name: userData.lastName,
-          company: userData.company,
+          full_name: userData.fullName,
           country: userData.country,
+          zip_code: userData.zipCode,
           phone_number: userData.phoneNumber,
         },
       },

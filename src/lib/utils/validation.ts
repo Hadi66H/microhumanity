@@ -31,8 +31,28 @@ export function validatePassword(password: string): ValidationResult {
     return { isValid: false, error: 'Password is required' };
   }
   
-  if (password.length < 6) {
-    return { isValid: false, error: 'Password must be at least 6 characters long' };
+  if (password.length < 8) {
+    return { isValid: false, error: 'Password must be at least 8 characters long' };
+  }
+  
+  // Check for lowercase letter
+  if (!/[a-z]/.test(password)) {
+    return { isValid: false, error: 'Password must contain at least one lowercase letter' };
+  }
+  
+  // Check for uppercase letter
+  if (!/[A-Z]/.test(password)) {
+    return { isValid: false, error: 'Password must contain at least one uppercase letter' };
+  }
+  
+  // Check for number
+  if (!/\d/.test(password)) {
+    return { isValid: false, error: 'Password must contain at least one number' };
+  }
+  
+  // Check for special character
+  if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+    return { isValid: false, error: 'Password must contain at least one special character' };
   }
   
   return { isValid: true };
@@ -113,9 +133,26 @@ export function validateUrl(url: string): ValidationResult {
 }
 
 /**
+ * Validates zip code format
+ */
+export function validateZipCode(zipCode: string): ValidationResult {
+  if (!zipCode) {
+    return { isValid: false, error: 'Zip code is required' };
+  }
+  
+  // Basic zip code validation (5 digits for US, can be extended for other countries)
+  const zipRegex = /^\d{5}(-\d{4})?$/;
+  if (!zipRegex.test(zipCode)) {
+    return { isValid: false, error: 'Please enter a valid zip code' };
+  }
+  
+  return { isValid: true };
+}
+
+/**
  * Validates form data object
  */
-export function validateFormData(data: Record<string, string>, rules: Record<string, (value: string) => ValidationResult>): Record<string, string> {
+export function validateFormData(data: Record<string, any>, rules: Record<string, (value: string) => ValidationResult>): Record<string, string> {
   const errors: Record<string, string> = {};
   
   for (const [field, validator] of Object.entries(rules)) {
