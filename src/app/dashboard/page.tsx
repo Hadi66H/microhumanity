@@ -1,6 +1,11 @@
 'use client';
 
-import ReactECharts from 'echarts-for-react';
+import dynamic from 'next/dynamic';
+
+const ReactECharts = dynamic(() => import('echarts-for-react'), {
+  ssr: false,
+  loading: () => <div className="flex items-center justify-center h-64">Loading chart...</div>
+});
 
 export default function Dashboard() {
   // Sleep Hours Data (Last 7 days)
@@ -195,7 +200,7 @@ export default function Dashboard() {
             9,500
           </p>
           <p className='text-sm text-gray-500 dark:text-gray-400 mt-1'>
-            Today's average
+            Today&apos;s average
           </p>
         </div>
 
