@@ -50,33 +50,33 @@ export function Header() {
 
   if (isLoading) {
     return (
-      <header className='bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4'>
+      <header className='bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 sm:px-6 py-3 sm:py-4'>
         <div className='flex items-center justify-between'>
-          <div className='flex items-center space-x-3'>
-            <div className='w-8 h-8 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse'></div>
+          <div className='flex items-center space-x-2 sm:space-x-3'>
+            <div className='w-6 h-6 sm:w-8 sm:h-8 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse'></div>
             <div className='space-y-1'>
-              <div className='h-4 w-32 bg-gray-200 dark:bg-gray-700 rounded animate-pulse'></div>
-              <div className='h-3 w-48 bg-gray-200 dark:bg-gray-700 rounded animate-pulse'></div>
+              <div className='h-3 sm:h-4 w-24 sm:w-32 bg-gray-200 dark:bg-gray-700 rounded animate-pulse'></div>
+              <div className='h-2 sm:h-3 w-32 sm:w-48 bg-gray-200 dark:bg-gray-700 rounded animate-pulse'></div>
             </div>
           </div>
-          <div className='w-20 h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse'></div>
+          <div className='w-16 sm:w-20 h-6 sm:h-8 bg-gray-200 dark:bg-gray-700 rounded animate-pulse'></div>
         </div>
       </header>
     );
   }
 
   return (
-    <header className='bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4'>
+    <header className='bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 sm:px-6 py-3 sm:py-4'>
       <div className='flex items-center justify-between'>
-        <div className='flex items-center space-x-3'>
-          <div className='w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center'>
-            <User className='w-5 h-5 text-white' />
+        <div className='flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1'>
+          <div className='w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center shrink-0'>
+            <User className='w-3 h-3 sm:w-5 sm:h-5 text-white' />
           </div>
-          <div>
-            <h2 className='text-sm font-medium text-gray-900 dark:text-white'>
+          <div className='min-w-0 flex-1'>
+            <h2 className='text-xs sm:text-sm font-medium text-gray-900 dark:text-white truncate'>
               {user?.full_name || 'User'}
             </h2>
-            <p className='text-xs text-gray-500 dark:text-gray-400'>
+            <p className='text-xs text-gray-500 dark:text-gray-400 truncate'>
               {user?.email}
             </p>
           </div>
@@ -86,10 +86,10 @@ export function Header() {
           variant='outline'
           size='sm'
           onClick={handleLogout}
-          className='flex items-center space-x-2'
+          className='flex items-center space-x-1 sm:space-x-2 shrink-0'
         >
-          <LogOut className='w-4 h-4' />
-          <span>Logout</span>
+          <LogOut className='w-3 h-3 sm:w-4 sm:h-4' />
+          <span className='hidden sm:inline'>Logout</span>
         </Button>
       </div>
     </header>
