@@ -50,7 +50,7 @@ const MenuContent = ({
 }: {
   isCollapsed?: boolean;
   isSmallScreen?: boolean;
-  setIsCollapsed: () => void;
+  setIsCollapsed?: () => void;
   onMobileClose?: () => void;
 }) => (
   <nav className={`space-y-2 ${isSmallScreen ? 'pl-4' : ''}`}>
@@ -59,8 +59,11 @@ const MenuContent = ({
         key={index}
         href={item.href}
         onClick={() => {
-          setIsCollapsed();
-          onMobileClose?.();
+          // Only close mobile sheet on small screens
+          if (isSmallScreen) {
+            onMobileClose?.();
+          }
+          // Don't call setIsCollapsed for desktop - let it stay open
         }}
       >
         <Button
@@ -131,7 +134,7 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
               {/* Navigation Links */}
               <div className='flex-1 p-4'>
                 <MenuContent
-                  setIsCollapsed={onToggle}
+                  isSmallScreen={true}
                   onMobileClose={() => setIsMobileOpen(false)}
                 />
               </div>
