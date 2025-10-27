@@ -50,7 +50,7 @@ export function Header() {
 
   if (isLoading) {
     return (
-      <header className='bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 sm:px-6 py-3 sm:py-4'>
+      <header className='bg-white dark:bg-gray-800 px-2 sm:px-2 py-3 sm:py-4'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center space-x-2 sm:space-x-3'>
             <div className='w-6 h-6 sm:w-8 sm:h-8 bg-gray-200 dark:bg-gray-700 rounded-full animate-pulse'></div>
@@ -66,7 +66,7 @@ export function Header() {
   }
 
   return (
-    <header className='bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 sm:px-6 py-3 sm:py-4'>
+    <header className='bg-white dark:bg-gray-800 px-4 sm:px-2 py-3 sm:py-4'>
       <div className='flex items-center justify-between'>
         <div className='flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1'>
           <div className='w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center shrink-0'>
