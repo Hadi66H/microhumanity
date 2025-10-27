@@ -3,7 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 import {
   LayoutDashboard,
   Settings,
@@ -120,9 +125,7 @@ export function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
             <div className='flex flex-col h-full'>
               {/* Header */}
               <div className='p-4 border-b border-gray-200 dark:border-gray-700'>
-                <h2 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                  Menu
-                </h2>
+                <SheetTitle>Menu</SheetTitle>
               </div>
 
               {/* Navigation Links */}
